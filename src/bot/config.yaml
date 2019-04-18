@@ -1,0 +1,49 @@
+#Basic settings
+settings:
+  token: afd0c4f2ef153331db5e0620385dab9852b0045d
+  server:
+    host: 'http://localhost:3000'
+  bot:
+    id: 'test-environment'
+    host: '192.168.1.98'
+    port: 1313
+applications:
+  # APP1
+  - 
+    id: 'app1'
+    path: 'C:\app1'
+    version: 0.0.1
+
+    # Steps before extracting files
+    stepsBefore:
+      -
+        type: command
+        cmd: "iisreset /stop"
+
+    # Files to skip while stracting
+    ignoreFiles:
+      -
+        web.config
+
+    # Files to merge
+    mergeFiles:
+      -
+        appsettings.json
+        
+    # Steps after extracting files
+    stepsAfter:
+      -
+        type: command
+        cmd: "iisreset /start"
+
+  # # APP2
+  # - 
+  #   id: 'app2'
+  #   path: 'C:\app2'
+  #   version: 0.0.1
+  #   overwrite: false #Default true
+  #   steps_after:
+  #     -
+  #       type: command
+  #       cmd: "pm2 reload all"                 
+  
